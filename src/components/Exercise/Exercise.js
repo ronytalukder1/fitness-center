@@ -50,7 +50,7 @@ const Exercise = () => {
     ]
     return (
         <div className=' exercise'>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-10 lg:mt-[170px]'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-10 lg:mt-[120px]'>
                 {exercises.map(exercise => <ExerciseCard
                     key={exercise.id}
                     exercise={exercise}
