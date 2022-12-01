@@ -3,7 +3,17 @@ import avatar from '../../assets/jungkook.jpg'
 
 const ExerciseActivity = ({ activityCart }) => {
     console.log(activityCart)
+    const [breakTime, setBreakTime] = useState(0);
 
+    let exerciseTime = 0;
+    for (const exercise of activityCart) {
+        exerciseTime = exerciseTime + exercise.time;
+    }
+
+    const handleBreakTime = (time) => {
+        setBreakTime(time);
+        localStorage.setItem('break-time', time)
+    }
 
     return (
         <div className='mt-10 bg-slate-100 p-4 rounded-2xl shadow-2xl'>
