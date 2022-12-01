@@ -3,7 +3,7 @@ import avatar from '../../assets/jungkook.jpg'
 
 const ExerciseActivity = ({ activityCart }) => {
     console.log(activityCart)
-    const [breakTime, setBreakTime] = useState(0);
+    const [breakTime, setBreakTime] = useState(0)
 
     let exerciseTime = 0;
     for (const exercise of activityCart) {
