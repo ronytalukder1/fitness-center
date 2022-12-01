@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import avatar from '../../assets/jungkook.jpg'
+import { getStoredTime } from '../utilities/fakedb';
 
 const ExerciseActivity = ({ activityCart }) => {
-    console.log(activityCart)
+
     const [breakTime, setBreakTime] = useState(0)
 
     let exerciseTime = 0;
@@ -10,9 +12,21 @@ const ExerciseActivity = ({ activityCart }) => {
         exerciseTime = exerciseTime + exercise.time;
     }
 
+    useEffect(() => {
+        const storedTime = getStoredTime();
+        console.log(storedTime);
+        setBreakTime(storedTime);
+
+    }, [breakTime])
+
     const handleBreakTime = (time) => {
         setBreakTime(time);
         localStorage.setItem('break-time', time)
+
+    }
+
+    const activityComplete = () => {
+        toast.success('Activity Completed')
     }
 
     return (
@@ -57,7 +71,7 @@ const ExerciseActivity = ({ activityCart }) => {
                 <p className='font-bold'>Break Time</p>
                 <p className='text-slate-500 font-bold'>{breakTime} seconds</p>
             </div>
-            <button className="btn btn-accent text-white w-full">Activity Completed</button>
+            <button onClick={activityComplete} className="btn btn-accent text-white w-full">Activity Completed</button>
         </div>
     );
 };

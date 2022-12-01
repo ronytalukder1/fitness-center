@@ -63,7 +63,7 @@ const Exercise = () => {
                     handleAddToCart={handleAddToCart}
                 ></ExerciseCard>)}
             </div>
-            <div>
+            <div className='mx-10 md:mx-0'>
                 <ExerciseActivity activityCart={activityCart}></ExerciseActivity>
             </div>
         </div>
