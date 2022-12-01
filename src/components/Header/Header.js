@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/download.png';
 
 const Header = () => {
     const menuItems = <>
@@ -20,7 +20,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a href='/' className="btn btn-ghost normal-case text-xl"><img className='w-28 -mt-7' src={logo} alt="" /></a>
+                <a href='/' className="btn btn-ghost normal-case text-xl"><img className='w-32 -mt-7' src={logo} alt="" /></a>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
