@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/download.png';
 
 const Header = () => {
@@ -8,6 +9,7 @@ const Header = () => {
         <li><a className='font-bold' href="/blog">Blog</a></li>
         <li><a className='font-bold' href="/gallary">Gallary</a></li>
         <li><a className='font-bold' href="/contact">Contact</a></li>
+        <li><Link to='/login'><button className="btn btn-success text-white">Login</button></Link></li>
     </>
     return (
         <div className="navbar px-10">
