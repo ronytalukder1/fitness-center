@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import ExerciseActivity from '../ExerciseActivity/ExerciseActivity';
-import ExerciseCard from '../ExerciseCard/ExerciseCard';
-import image1 from '../../assets/exercise1.jpg';
-import image2 from '../../assets/exercise2.jpg';
-import image3 from '../../assets/exercise3.jpg';
-import image4 from '../../assets/exercise4.jpg';
-import image5 from '../../assets/exercise5.jpg';
-import image6 from '../../assets/exercise6.jpg';
-import './Exercise.css'
+import image1 from '../../../assets/exercise1.jpg';
+import image2 from '../../../assets/exercise2.jpg';
+import image3 from '../../../assets/exercise3.jpg';
+import image4 from '../../../assets/exercise4.jpg';
+import image5 from '../../../assets/exercise5.jpg';
+import image6 from '../../../assets/exercise6.jpg';
+import ActivityCart from '../ActivityCart/ActivityCart';
 
-const Exercise = () => {
+import ExerciseCard from '../ExerciseCard/ExerciseCard';
+import './Main.css'
+const Main = () => {
     const [activityCart, setActivityCart] = useState([]);
     const exercises = [
         {
@@ -48,14 +48,16 @@ const Exercise = () => {
             time: 40,
             image: image6
         },
-    ]
-
+    ];
     const handleAddToCart = (exercise) => {
         const newActivityCart = [...activityCart, exercise];
         setActivityCart(newActivityCart);
     }
     return (
-        <div className=' exercise'>
+        <div className=' main'>
+            <div className='mx-10 lg:mx-0'>
+                <ActivityCart activityCart={activityCart}></ActivityCart>
+            </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-10 lg:mt-[120px]'>
                 {exercises.map(exercise => <ExerciseCard
                     key={exercise.id}
@@ -63,11 +65,9 @@ const Exercise = () => {
                     handleAddToCart={handleAddToCart}
                 ></ExerciseCard>)}
             </div>
-            <div className='mx-10 md:mx-0'>
-                <ExerciseActivity activityCart={activityCart}></ExerciseActivity>
-            </div>
+
         </div>
     );
 };
 
-export default Exercise;
+export default Main;

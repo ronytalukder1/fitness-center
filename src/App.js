@@ -1,16 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header/Header';
-import Exercise from './components/Exercise/Exercise';
+
+
 import { Toaster } from 'react-hot-toast';
-import Blog from './components/Blog/Blog';
+
+
+import { RouterProvider } from 'react-router-dom';
+import { router } from './Routes/Route/Route';
 
 function App() {
   return (
     <div>
-      <Header></Header>
-      <Exercise></Exercise>
-      <Blog></Blog>
+      <RouterProvider router={router}>
+
+      </RouterProvider>
       <Toaster></Toaster>
     </div>
   );

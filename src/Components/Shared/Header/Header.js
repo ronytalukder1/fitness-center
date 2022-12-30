@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from '../../assets/download.png';
+import logo from '../../../assets/download.png';
 
 const Header = () => {
     const menuItems = <>
         <li><a className='font-bold' href="/">Home</a></li>
-        <li><a className='font-bold' href="/">About</a></li>
-        <li><a className='font-bold' href="/">Blog</a></li>
-        <li><a className='font-bold' href="/">Gallary</a></li>
-        <li><a className='font-bold' href="/">Contact</a></li>
+        <li><a className='font-bold' href="/about">About</a></li>
+        <li><a className='font-bold' href="/blog">Blog</a></li>
+        <li><a className='font-bold' href="/gallary">Gallary</a></li>
+        <li><a className='font-bold' href="/contact">Contact</a></li>
     </>
     return (
         <div className="navbar px-10">

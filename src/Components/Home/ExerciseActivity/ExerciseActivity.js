@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import avatar from '../../assets/jungkook.jpg'
-import { getStoredTime } from '../utilities/fakedb';
+import avatar from '../../../assets/jungkook.jpg'
+import { getStoredTime } from '../utilities/FakeDb';
 
 const ExerciseActivity = ({ activityCart }) => {
 
