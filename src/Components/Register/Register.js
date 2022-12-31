@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import registerImage from '../../assets/Register (2).jpg'
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [registerError, setRegisterError] = useState('');
+    const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate('/');
+
+    const handleRegister = data => {
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+                toast.success('User created successfully')
+            })
+            .catch(err => {
+                setRegisterError(err.message);
+                console.error(err)
+            })
+    }
 
     return (
         <section className='my-28 block lg:flex justify-around'>
@@ -15,7 +34,7 @@ const Register = () => {
             <div className='w-full  md:w-[385px] h-[690px] shadow-xl  border px-[29px] py-[25px] mx-auto'>
                 <h2 className='text-xl text-center text-black'>Register</h2>
 
-                <form onSubmit={handleSubmit()}>
+                <form onSubmit={handleSubmit(handleRegister)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text text-black">First Name</span>
                         </label>
