@@ -1,3 +1,4 @@
+import { getValue } from '@testing-library/user-event/dist/utils';
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
@@ -7,24 +8,40 @@ import registerImage from '../../assets/Register (2).jpg'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, getValues } = useForm();
     const [registerError, setRegisterError] = useState('');
     const { createUser } = useContext(AuthContext);
     const navigate = useNavigate('/');
+    const [name, setName] = useState('');
+    console.log(name);
+    const values = getValues();
+    console.log(values);
+    const firstName = values.firstname;
+    const lastName = values.lastname;
+    const userName = firstName + lastName;
+    console.log(userName);
 
     const handleRegister = data => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+
+                // setName(userName);
                 navigate('/');
                 toast.success('User created successfully')
+                toast.success(`Username: ${userName}`)
             })
             .catch(err => {
                 setRegisterError(err.message);
                 console.error(err)
             })
     }
+
+    // const firstName = data.firstname;
+    // const lastName = data.lastname;
+    // const userName = firstName + lastName;
+    // console.log(firstName, lastName)
 
     return (
         <section className='my-28 block lg:flex justify-around'>
@@ -50,7 +67,7 @@ const Register = () => {
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text text-black">Username</span>
                         </label>
-                        <input type="text" {...register("username")} className="input input-bordered border-slate-400 w-full max-w-xs text-black" />
+                        <input type="text" {...register("username")} value={userName} className="input input-bordered border-slate-400 w-full max-w-xs text-black bg-slate-200" readOnly />
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text text-black">Email</span>
