@@ -50,7 +50,7 @@ const Register = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    createUser(data.email, data.password)
+                    createUser(email, password)
                         .then(result => {
                             const user = result.user;
                             console.log(user);

@@ -16,11 +16,21 @@ const Login = () => {
     console.log(loginError)
 
     const handleLogin = data => {
-        fetch(`http://localhost:5000/users/${data.email}`)
+        const user = {
+            email: data.email,
+            password: data.password,
+        }
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.acknowledged) {
+            .then(result => {
+                console.log(result);
+                if (result.acknowledged) {
                     logIn(data.email, data.password)
                         .then(result => {
                             const user = result.user;
@@ -32,12 +42,16 @@ const Login = () => {
                             console.error(err)
                             setLoginError(err.message)
                         })
-                }
-                else {
-                    setLoginError(data.message)
+                } else {
+                    setLoginError("User Invaild")
                 }
 
-            })
+
+            }
+
+            )
+
+
 
     }
 
