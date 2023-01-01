@@ -14,7 +14,7 @@ const ExerciseActivity = ({ activityCart }) => {
 
     useEffect(() => {
         const storedTime = getStoredTime();
-        console.log(storedTime);
+
         setBreakTime(storedTime);
 
     }, [breakTime])
