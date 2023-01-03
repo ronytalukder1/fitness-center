@@ -1,6 +1,4 @@
 import React from 'react';
-import Exercise from '../Exercise/Exercise';
-import Blog from '../Blog/Blog'
 import useTitle from '../../../Hooks/useTitle';
 import tickImage from '../../../assets/images/tickIcon.png'
 import bookImage from '../../../assets/images/bookIcon.png'

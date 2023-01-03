@@ -12,9 +12,11 @@ const Login = () => {
     const [loginError, setLoginError] = useState('');
     const { logIn } = useContext(AuthContext);
     const navigate = useNavigate();
-    useTitle("Login");
-    console.log(loginError)
 
+    //Changing title based on route
+    useTitle("Login");
+
+    //LogIn
     const handleLogin = data => {
         const user = {
             email: data.email,
@@ -60,7 +62,7 @@ const Login = () => {
             <div className='md:w-full lg:w-1/2 mb-16 lg:mb-0'>
                 <img className='md:mx-auto lg:mx-0' src={loginImage} alt="" />
             </div>
-            <div className='w-full  md:w-[385px] h-[390px] shadow-xl  border px-[29px] py-[25px] mx-auto mt-28'>
+            <div className='w-full  md:w-[385px] h-[390px] shadow-xl  border px-[29px] py-[30px] mx-auto mt-40'>
                 <h2 className='text-xl text-center text-black'>Login</h2>
 
                 <form onSubmit={handleSubmit(handleLogin)}>
