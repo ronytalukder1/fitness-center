@@ -25,7 +25,7 @@ const Header = () => {
     //Geting specific user data from the server
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/users/${user?.email}`)
+            fetch(`https://creativeit-demo-server.vercel.app/users/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -36,10 +36,11 @@ const Header = () => {
 
     //Navbar Items
     const menuItems = <>
-        <li><a className='font-bold text-[14px]' href="/home">হোম</a></li>
-        <li><a className='font-bold text-[14px]' href="/home">আমাদের সম্পর্কে</a></li>
-        <li><a className='font-bold text-[14px]' href="/home">সাফল্যের গল্প</a></li>
-        <li><a className='font-bold text-[14px]' href="/home">ফ্রিলান্সিং</a></li>
+        <li><Link to='/home' className='font-bold text-[14px]'>হোম</Link></li>
+        <li><Link to='/home' className='font-bold text-[14px]'>আমাদের সম্পর্কে</Link></li>
+        <li><Link to='/home' className='font-bold text-[14px]'>সাফল্যের গল্প</Link></li>
+        <li><Link to='/home' className='font-bold text-[14px]'>ফ্রিলান্সিং</Link></li>
+        
         {
             currentUser !== "" &&
             <button><img title={currentUser} className='w-[35px]' src={profileImage} alt="" /></button>

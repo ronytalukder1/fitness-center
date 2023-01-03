@@ -53,7 +53,7 @@ const Register = () => {
     }
     const saveUser = (username, email, password) => {
         const user = { username, email, password };
-        fetch('http://localhost:5000/users', {
+        fetch('https://creativeit-demo-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -95,7 +95,7 @@ const Register = () => {
             <div className='md:w-full lg:w-1/2 mb-16 lg:mb-0'>
                 <img className='md:mx-auto lg:mx-0' src={registerImage} alt="" />
             </div>
-            <div className='w-full  md:w-[385px] h-[760px] shadow-xl  border px-[29px] py-[25px] mx-auto'>
+            <div className='w-full  md:w-[385px] h-[790px] shadow-xl  border px-[29px] py-[25px] mx-auto'>
                 <h2 className='text-xl text-center text-black'>Register</h2>
 
                 <form onSubmit={handleSubmit(handleRegister)}>

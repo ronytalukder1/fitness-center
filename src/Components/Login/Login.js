@@ -22,7 +22,7 @@ const Login = () => {
             email: data.email,
             password: data.password,
         }
-        fetch('http://localhost:5000/user', {
+        fetch('https://creativeit-demo-server.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
