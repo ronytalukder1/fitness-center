@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from '../../../assets/images/logo.png'
+import logo from '../../../assets/download.png'
 
 const Footer = () => {
     return (
         <footer className="footer p-10 bg-neutral text-neutral-content mx-auto" >
             <div>
                 <img className='w-[200px] text-white' src={logo} alt="" />
-                <p>Momtaz Plaza (4th floor), House#7, Road#4 <br /> Opposite of Labaid Hospital Dhaka, 1205</p>
+
             </div>
             <div>
                 <span className="footer-title">Social</span>

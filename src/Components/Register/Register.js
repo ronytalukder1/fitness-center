@@ -91,43 +91,46 @@ const Register = () => {
     }
 
     return (
-        <section className='my-28 block lg:flex justify-around'>
+        <section className='my-28 block lg:flex justify-between'>
             <div className='md:w-full lg:w-1/2 mb-16 lg:mb-0'>
                 <img className='md:mx-auto lg:mx-0' src={registerImage} alt="" />
             </div>
-            <div className='w-full  md:w-[385px] h-[790px] shadow-xl  border px-[29px] py-[25px] mx-auto'>
+            <div className='w-full  md:w-[385px]  shadow-xl  border px-[29px] py-[25px] mx-auto'>
                 <h2 className='text-xl text-center text-black'>Register</h2>
 
                 <form onSubmit={handleSubmit(handleRegister)}>
                     <div className="form-control w-full ">
                         <label className="label"><span className="label-text text-black">First Name</span>
                         </label>
-                        <input type="text" {...register("firstname")} className="input input-bordered border-slate-400 w-full  text-black" />
+                        <input type="text" {...register("firstname", { required: "Firstname is required" })} className="input input-bordered border-slate-400 w-full  text-black" />
+                        {errors.firstname && <p role="alert" className='text-red-700 text-[14px]'>{errors.firstname?.message}</p>}
                     </div>
 
                     <div className="form-control w-full ">
                         <label className="label"><span className="label-text text-black">Last Name</span>
                         </label>
-                        <input type="text" {...register("lastname")} className="input input-bordered border-slate-400 w-full  text-black" />
+                        <input type="text" {...register("lastname", { required: "Lastname is required" })} className="input input-bordered border-slate-400 w-full  text-black" />
+                        {errors.lastname && <p role="alert" className='text-red-700 text-[14px]'>{errors.lastname?.message}</p>}
                     </div>
 
                     <div className="form-control w-full  ">
                         <label className="label"><span className="label-text text-black">Username</span>
                         </label>
-                        <input type="text" {...register("username")} className="input input-bordered border-slate-400 w-full  text-black " />
+                        <input type="text" {...register("username", { required: "Username required" })} className="input input-bordered border-slate-400 w-full  text-black " />
                         <p>{username}</p>
-                        <button onClick={handleUsername} className='btn btn-xs btn-error text-white'>Genarate Username</button>
+                        <button onClick={handleUsername} className='btn btn-xs btn-success text-white'>Genarate Username</button>
+                        {errors.username && <p role="alert" className='text-red-700 text-[14px]'>{errors.username?.message}</p>}
                         {
-                            usernameError && <p role="alert" className='text-red-700'>{usernameError}</p>
+                            usernameError && <p role="alert" className='text-red-700 text-[14px]'>{usernameError}</p>
                         }
                     </div>
                     <div className="form-control w-full ">
                         <label className="label"><span className="label-text text-black">Email</span>
                         </label>
                         <input type="email" {...register("email", { required: "Email Address is required" })} className="input input-bordered w-full  text-black" />
-                        {errors.email && <p role="alert" className='text-red-700'>{errors.email?.message}</p>}
+                        {errors.email && <p role="alert" className='text-red-700 text-[14px]'>{errors.email?.message}</p>}
                         {
-                            emailError && <p role="alert" className='text-red-700'>{emailError}</p>
+                            emailError && <p role="alert" className='text-red-700 text-[14px]'>{emailError}</p>
                         }
                     </div>
 
@@ -138,7 +141,7 @@ const Register = () => {
                             required: 'Password is required',
                             minLength: { value: 6, message: 'Password must be 6 characters or longer' }
                         })} className="input input-bordered w-full " />
-                        {errors.password && <p role="alert" className='text-red-700'>{errors.password?.message}</p>}
+                        {errors.password && <p role="alert" className='text-red-700 text-[14px]'>{errors.password?.message}</p>}
                     </div>
 
                     <div className="form-control w-full  ">
@@ -148,18 +151,18 @@ const Register = () => {
                             required: 'Password is required',
                             minLength: { value: 6, message: 'Password must be 6 characters or longer' }
                         })} className="input input-bordered w-full " />
-                        {errors.confirm_password && <p role="alert" className='text-red-700'>{errors.confirm_password?.message}</p>}
+                        {errors.confirm_password && <p role="alert" className='text-red-700 text-[14px]'>{errors.confirm_password?.message}</p>}
                     </div>
 
                     <div>
                         {
-                            registerError && <p className='text-red-700 mb-5'>{registerError}</p>
+                            registerError && <p className='text-red-700 text-[14px] mb-5'>{registerError}</p>
                         }
                     </div>
 
 
-                    <button className="btn btn-error text-white w-full mt-5 mb-[11px]">Register</button>
-                    <p className='text-black text-center'>Already have an account? <span className='text-error'><Link to='/'>Please Login</Link></span></p>
+                    <button className="btn btn-success text-white w-full mt-5 mb-[11px]">Register</button>
+                    <p className='text-black text-center'>Already have an account? <span className='text-success'><Link to='/'>Please Login</Link></span></p>
                 </form>
             </div>
         </section>

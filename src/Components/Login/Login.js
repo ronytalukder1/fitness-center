@@ -58,11 +58,11 @@ const Login = () => {
     }
 
     return (
-        <section className='my-24 block lg:flex justify-around'>
+        <section className='my-24 block lg:flex justify-between mx-16'>
             <div className='md:w-full lg:w-1/2 mb-16 lg:mb-0'>
                 <img className='md:mx-auto lg:mx-0' src={loginImage} alt="" />
             </div>
-            <div className='w-full  md:w-[385px] h-[390px] shadow-xl  border px-[29px] py-[30px] mx-auto mt-40'>
+            <div className='md:w-full lg:w-[400px] lg:h-[400px] shadow-xl  border px-[29px] py-[30px] mx-auto lg:mx-0 mt-40'>
                 <h2 className='text-xl text-center text-black'>Login</h2>
 
                 <form onSubmit={handleSubmit(handleLogin)}>
@@ -85,13 +85,13 @@ const Login = () => {
 
 
 
-                    <button className="btn btn-error text-white w-full mt-5 mb-[11px]">Login</button>
+                    <button className="btn btn-success text-white w-full mt-5 mb-[11px]">Login</button>
                     <div>
                         {
                             loginError && <p className='text-red-700 mb-5'>{loginError}</p>
                         }
                     </div>
-                    <p className='text-black'>New to Doctors Portal? <span className='text-error'><Link to='/register'>Create new account</Link></span></p>
+                    <p className='text-black'>New to Fitness Center? <span className='text-success'><Link to='/register'>Create new account</Link></span></p>
 
                 </form>
             </div>

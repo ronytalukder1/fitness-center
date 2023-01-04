@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../../../assets/images/logo.png';
+import logo from '../../../assets/download.png';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import profileImage from '../../../assets/images/profile.jpg'
 
@@ -36,14 +36,18 @@ const Header = () => {
 
     //Navbar Items
     const menuItems = <>
-        <li><Link to='/home' className='font-bold text-[14px]'>হোম</Link></li>
-        <li><Link to='/home' className='font-bold text-[14px]'>আমাদের সম্পর্কে</Link></li>
-        <li><Link to='/home' className='font-bold text-[14px]'>সাফল্যের গল্প</Link></li>
-        <li><Link to='/home' className='font-bold text-[14px]'>ফ্রিলান্সিং</Link></li>
-        
+        <li><Link to='/home' className='font-bold text-[16px]'>Home</Link></li>
+        <li><Link to='/home' className='font-bold text-[16px]'>About</Link></li>
+        <li><Link to='/home' className='font-bold text-[16px]'>Blog</Link></li>
+        <li><Link to='/home' className='font-bold text-[16px]'>Gallary</Link></li>
+
         {
             currentUser !== "" &&
-            <button><img title={currentUser} className='w-[35px]' src={profileImage} alt="" /></button>
+            <div className='block lg:flex items-center ml-3 lg:ml-0'>
+                <button><img className='w-[35px]' src={profileImage} alt="" /></button>
+                <p className='text-success font-semibold'>{currentUser}</p>
+            </div>
+
 
 
         }
@@ -54,9 +58,7 @@ const Header = () => {
 
     </>
     return (
-        <div className="navbar px-10 mx-auto" style={{
-            width: "1320px"
-        }}>
+        <div className="navbar px-10 mx-auto" >
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -65,21 +67,21 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box ">
                         {menuItems}
                         {
-                            user?.email ? <li><Link onClick={handleSignOut} to='/home'><button className="btn btn-error text-white">LogOut</button></Link></li>
+                            user?.email ? <li><Link onClick={handleSignOut} to='/home'><button className="btn btn-success text-white">LogOut</button></Link></li>
                                 :
-                                <li><Link to='/'><button className="btn btn-error text-white">Login</button></Link></li>
+                                <li><Link to='/'><button className="btn btn-success text-white">Login</button></Link></li>
                         }
                     </ul>
                 </div>
                 <a href='/' className="btn btn-ghost normal-case text-xl"><img className='w-44' src={logo} alt="" /></a>
             </div>
-            <div className=" hidden lg:flex">
+            <div className=" hidden lg:flex ml-36">
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                     {
-                        user?.email ? <li><Link onClick={handleSignOut} to='/home'><button className="btn btn-error text-white">LogOut</button></Link></li>
+                        user?.email ? <li><Link onClick={handleSignOut} to='/home'><button className="btn btn-success text-white">LogOut</button></Link></li>
                             :
-                            <li><Link to='/'><button className="btn btn-error text-white">Login</button></Link></li>
+                            <li><Link to='/'><button className="btn btn-success text-white">Login</button></Link></li>
                     }
                 </ul>
             </div>
