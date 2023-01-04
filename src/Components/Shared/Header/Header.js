@@ -37,20 +37,9 @@ const Header = () => {
     //Navbar Items
     const menuItems = <>
         <li><Link to='/home' className='font-bold text-[16px]'>Home</Link></li>
-        <li><Link to='/home' className='font-bold text-[16px]'>About</Link></li>
-        <li><Link to='/home' className='font-bold text-[16px]'>Blog</Link></li>
-        <li><Link to='/home' className='font-bold text-[16px]'>Gallary</Link></li>
-
-        {
-            currentUser !== "" &&
-            <div className='block lg:flex items-center ml-3 lg:ml-0'>
-                <button><img className='w-[35px]' src={profileImage} alt="" /></button>
-                <p className='text-success font-semibold'>{currentUser}</p>
-            </div>
 
 
 
-        }
 
 
 
@@ -67,22 +56,39 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box ">
                         {menuItems}
                         {
+                            currentUser !== "" &&
+                            <div className='block lg:flex items-center ml-3 lg:ml-0'>
+                                <button><img className='w-[35px]' src={profileImage} alt="" /></button>
+                                <p className='text-success font-semibold'>{currentUser}</p>
+                            </div>
+                        }
+                        {
                             user?.email ? <li><Link onClick={handleSignOut} to='/home'><button className="btn btn-success text-white">LogOut</button></Link></li>
                                 :
                                 <li><Link to='/'><button className="btn btn-success text-white">Login</button></Link></li>
                         }
                     </ul>
                 </div>
-                <a href='/' className="btn btn-ghost normal-case text-xl"><img className='w-44' src={logo} alt="" /></a>
+                <a href='/home' className="btn btn-ghost normal-case text-xl"><img className='w-44' src={logo} alt="" /></a>
             </div>
-            <div className=" hidden lg:flex ml-36">
+            <div className=" hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
-                    {
-                        user?.email ? <li><Link onClick={handleSignOut} to='/home'><button className="btn btn-success text-white">LogOut</button></Link></li>
-                            :
-                            <li><Link to='/'><button className="btn btn-success text-white">Login</button></Link></li>
-                    }
+                    <div className='block lg:flex items-center ml-96'>
+                        {
+                            currentUser !== "" &&
+                            <div className='block lg:flex items-center ml-3 lg:ml-0'>
+                                <button><img className='w-[35px]' src={profileImage} alt="" /></button>
+                                <p className='text-success font-semibold'>{currentUser}</p>
+                            </div>
+
+                        }
+                        {
+                            user?.email ? <li><Link onClick={handleSignOut} to='/home'><button className="btn btn-success text-white">LogOut</button></Link></li>
+                                :
+                                <li><Link to='/'><button className="btn btn-success text-white">Login</button></Link></li>
+                        }
+                    </div>
                 </ul>
             </div>
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/login (2).jpg'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
@@ -13,6 +13,8 @@ const Login = () => {
     const { logIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/home'
     //Changing title based on route
     useTitle("Login");
 
@@ -37,7 +39,7 @@ const Login = () => {
                         .then(result => {
                             const user = result.user;
                             console.log(user);
-                            navigate('/home')
+                            navigate(from, { replace: true });
                             toast.success('LogIn Successfull')
                         })
                         .catch(err => {
@@ -58,7 +60,7 @@ const Login = () => {
     }
 
     return (
-        <section className='my-24 block lg:flex justify-between mx-16'>
+        <section className='my-24 block lg:flex justify-between lg:mx-16'>
             <div className='md:w-full lg:w-1/2 mb-16 lg:mb-0'>
                 <img className='md:mx-auto lg:mx-0' src={loginImage} alt="" />
             </div>
